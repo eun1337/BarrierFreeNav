@@ -21,6 +21,8 @@ while True:
 	net.setInput(blob)
 	detections = net.forward()
 
+	boxCount = 0
+
 	# loop over the detections to extract specific confidence
 	for i in range(0, detections.shape[2]):
 		confidence = detections[0, 0, i, 2]
@@ -29,6 +31,8 @@ while True:
 		if confidence < 0.5:
 			continue
 
+		boxCount += 1
+		
 		# compute the boxes (x, y)-coordinates
 		box = detections[0, 0, i, 3:7] * np.array([width, height, width, height])
 		(x1, y1, x2, y2) = box.astype("int")
@@ -44,6 +48,8 @@ while True:
 
 	# show the output frame
 	cv2.imshow("Window", frame)
+
+	print(boxCount);
  
 	# if the `w` key was pressed, break from the loop
 	if cv2.waitKey(1) == ord("w"):
