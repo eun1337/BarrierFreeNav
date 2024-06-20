@@ -1,1 +1,16 @@
+# Project License Information
 
+This project includes code from multiple sources, each with its own license.
+
+## Wheel_In : code using Custom License
+
+Permission is hereby granted by 'Wheel In' to 'BarrierFreeNav' to use, copy, modify, and distribute the code contained in this repository.
+
+For any questions or further clarifications, please contact the original author at [https://github.com/kookmin-sw/capstone-2023-41.git].
+
+
+## MainActivity.kt : Code using CC BY 4.0 License
+
+CC BY 4.0 License(https://creativecommons.org/licenses/by/4.0/legalcode)
+
+Copyright (c) 2022 minWachya
