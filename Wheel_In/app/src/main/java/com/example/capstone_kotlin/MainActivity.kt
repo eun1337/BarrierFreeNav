@@ -11,6 +11,7 @@ import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity // AppCompatActivity 클래스를 임포트. AppCompatActivity는 안드로이드 앱에서 사용되는 기본 클래스
 import android.os.Bundle // Bundle은 액티비티가 시스템에서 재생성될 때 데이터를 저장하고 다시 가져오는 데 사용
 import android.os.Handler
+import android.speech.SpeechRecognizer
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
@@ -21,11 +22,14 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.davemorrissey.labs.subscaleview.ImageSource
+import com.example.capstone_kotlin.databinding.ActivityMainBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.zxing.integration.android.IntentIntegrator.REQUEST_CODE
 
 
 class MainActivity : AppCompatActivity() {  // MainActivity정의, AppCompatActivity 클래스를 상속받음
+
+    private lateinit var binding: ActivityMainBinding
 
     // 지도
     private lateinit var map: PinView
@@ -36,7 +40,6 @@ class MainActivity : AppCompatActivity() {  // MainActivity정의, AppCompatActi
     private lateinit var searchView_layout: LinearLayout
     private lateinit var cancel: Button
     private lateinit var svAndCancel: LinearLayout
-
 
     // 출발지 목적지 같은 값이 들어가지 않게 확인하는 변수
     private var checkS1: String? = null
@@ -109,8 +112,16 @@ class MainActivity : AppCompatActivity() {  // MainActivity정의, AppCompatActi
     private lateinit var bottomSheetForwardBtn : Button
     private lateinit var bottomSheetBackwardBtn : Button
 
+    private lateinit var speechRecognizer: SpeechRecognizer
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) { // onCreate 함수를 오버라이드. 이 함수는 액티비티가 생성될 때 호출됨.
         super.onCreate(savedInstanceState) // 부모 클래스의 onCreate 함수를 호출
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         // DB
         db1 = DataBaseHelper(this, "Nodes1.db")
@@ -161,7 +172,6 @@ class MainActivity : AppCompatActivity() {  // MainActivity정의, AppCompatActi
 
         var end = findViewById<Button>(R.id.end)
         end.setBackgroundColor(Color.parseColor("#1188ff"))
-
 
 
         // QR 촬영 버튼
@@ -507,6 +517,14 @@ class MainActivity : AppCompatActivity() {  // MainActivity정의, AppCompatActi
             mScale = map.scale
             mScale -= 0.3f
             map.animateScaleAndCenter(mScale, PointF(centerX, centerY))?.start()
+        }
+
+
+        var btnSTT = findViewById<Button>(R.id.btnSTT)
+        btnSTT.setBackgroundColor(Color.parseColor("#1188ff"))
+
+        btnSTT.setOnClickListener {
+            startSTTActivity()
         }
 
 
@@ -972,7 +990,7 @@ class MainActivity : AppCompatActivity() {  // MainActivity정의, AppCompatActi
 
     // 비상 연락처 호출 함수
     private fun showEmergencyPopup() {
-        val contactNumber = "02-710-9119"
+        val contactNumber = "02-910-4114"
 
         val inflater = layoutInflater
         val popupView = inflater.inflate(R.layout.emergency_popup, null)
@@ -1272,5 +1290,11 @@ class MainActivity : AppCompatActivity() {  // MainActivity정의, AppCompatActi
                 }
             }
         }
+    }
+
+    // btnStt 버튼 클릭 시 호출될 메서드
+    fun startSTTActivity() {
+        val intent = Intent(this, STTActivity::class.java)
+        startActivity(intent)
     }
 }
