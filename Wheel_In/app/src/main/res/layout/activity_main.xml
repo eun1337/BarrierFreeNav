@@ -29,13 +29,19 @@
 
                 <SearchView
                     android:id="@+id/searchView1"
-                    android:layout_width="280dp"
+                    android:layout_width="220dp"
                     android:layout_height="70dp"
-                    android:queryHint="목적지를 입력하세요."
-                    android:iconifiedByDefault="false"
-                    android:background="@drawable/searchview_radious"
                     android:layout_margin="5dp"
-                    />
+                    android:background="@drawable/searchview_radious"
+                    android:iconifiedByDefault="false"
+                    android:queryHint="목적지를 입력하세요." />
+
+                <Button
+                    android:id="@+id/micButton"
+                    android:layout_width="20dp"
+                    android:layout_height="61dp"
+                    android:layout_weight="10"
+                    android:text="Mic" />
 
                 <Button
                     android:id="@+id/qrButton"
