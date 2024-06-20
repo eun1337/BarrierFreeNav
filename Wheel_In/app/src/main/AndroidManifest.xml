@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.capstone_kotlin">
+    package="com.example.capstone_kotlin"> <!-- 빌드 시 소스가 이곳에 있는 것-->
 
+    <!--인터넷 권한-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--오디오 사용 권한-->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <queries>
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
+    </queries>
+
+     <!--권한 요청 부분-->
     <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
@@ -15,6 +27,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Capstone_kotlin"
         tools:targetApi="31">
+
+        <!--런처 액티비티 설정-->
         <activity
             android:name=".SplashActivity"
             android:exported="true"
@@ -24,6 +38,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- MainActivity 선언 -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -31,8 +47,13 @@
             >
         </activity>
 
+        <!-- ScanActivity 선언 -->
         <activity android:name=".ScanActivity"
             android:exported="true">
+        </activity>
+
+        <!-- STTActivity 선언 -->
+        <activity android:name=".STTActivity" >
         </activity>
 
         <activity android:name="com.journeyapps.barcodescanner.CaptureActivity"
