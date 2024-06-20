@@ -972,7 +972,7 @@ class MainActivity : AppCompatActivity() {  // MainActivity정의, AppCompatActi
 
     // 비상 연락처 호출 함수
     private fun showEmergencyPopup() {
-        val contactNumber = "02-910-4114"
+        val contactNumber = "02-710-9119"
 
         val inflater = layoutInflater
         val popupView = inflater.inflate(R.layout.emergency_popup, null)
