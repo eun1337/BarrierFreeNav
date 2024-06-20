@@ -1,3 +1,10 @@
+<!-- 
+This file is part of BarrierFreeNav.
+ *
+ * Copyright (c) 2024 에드윈
+ *
+ * Licensed under the CC BY 4.0 License (https://creativecommons.org/licenses/by/4.0/legalcode). -->
+
 import speech_recognition as sr
 
 # 음성 인식 객체 생성
