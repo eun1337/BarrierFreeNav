@@ -1,3 +1,10 @@
+<!-- 
+This file is part of BarrierFreeNav.
+ *
+ * Copyright (c) 2022 minWachya
+ *
+ * Licensed under the CC BY 4.0 License (https://creativecommons.org/licenses/by/4.0/legalcode). -->
+
 package com.example.capstone_kotlin
 
 import android.Manifest
